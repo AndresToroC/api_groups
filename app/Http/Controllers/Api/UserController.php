@@ -62,7 +62,12 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        //
+        $user->getRoleNames();
+
+        return response()->json([
+            'status' => true,
+            'user' => $user
+        ]);
     }
 
     public function update(Request $request, User $user)

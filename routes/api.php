@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\GroupController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user()->roles;
@@ -19,6 +20,7 @@ Route::prefix('auth')->group(function() {
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function() {
     Route::apiResources([
         'colors' => ColorController::class,
-        'users' => UserController::class
+        'users' => UserController::class,
+        'groups' => GroupController::class
     ]);
 });
